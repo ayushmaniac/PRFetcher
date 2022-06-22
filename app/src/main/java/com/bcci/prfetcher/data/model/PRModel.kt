@@ -15,9 +15,18 @@ data class PRModel(
 
 
 data class PRUser(
+
+    @SerializedName("id")
+    val userId : String,
+
     @SerializedName("login")
     val name: String,
 
     @SerializedName("avatar_url")
-    val avatarUrl:String?
+    val avatarUrl:String?,
+
+    @SerializedName("avatar_url")
+    val userProfileLink : String
+
+    //Not adding everything since it has a lot of data
 )
