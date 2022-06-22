@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bcci.prfetcher.R
 import com.bcci.prfetcher.data.model.PRModel
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.row_requests.view.*
 
 class PRAdapter(
     private val pullRequestsList : List<PRModel>) : RecyclerView.Adapter<PRViewHolder>() {
@@ -25,6 +27,12 @@ class PRAdapter(
 class PRViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindPullRequests(prModel: PRModel) {
-
+        itemView.tvTitle.text = prModel.title
+        itemView.tvClosedOn.text = "Merged on ${prModel.closedDate}"
+        itemView.tvCreatedAt.text = "Created at ${prModel.createdDate}"
+        itemView.tvUsername.text = "@"+prModel.user.name
+        Glide.with(itemView.context)
+            .load(prModel.user.avatarUrl)
+            .into(itemView.ivProfilePicture)
     }
 }
